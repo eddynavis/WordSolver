@@ -14,33 +14,31 @@ namespace WordSolver
         {
             words = new HashSet<string>();
             parseWords();
-            Console.WriteLine(words.Count);
         }
-
+        /// <summary>
+        /// Checks if the word is in the word list.
+        /// </summary>
+        /// <param name="word">Word to check.</param>
+        /// <returns>True if the word is in the list, False otherwise.</returns>
         public bool contains(String word) => words.Contains(word);
+        /// <summary>
+        /// Parses the word list txt file into a data structure.
+        /// </summary>
         private void parseWords()
         {
+            //Get the resource txt file and turn it into a HashSet
             Assembly assembly = IntrospectionExtensions.GetTypeInfo(typeof(Words)).Assembly;
             Stream stream = assembly.GetManifestResourceStream("WordSolver.words_alpha.txt");
             StreamReader reader = new StreamReader(stream);
             while (!reader.EndOfStream)
             {
                 string line = reader.ReadLine();
-                if (line.Length > 2 && line.Length < 10)
+                //Don't care about words that are less than 3 letters
+                if (line.Length > 2)
                 {
                     words.Add(line);
                 }
             }
-
-            //Console.WriteLine(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "words_alpha.txt"));
-            //string[] lines = File.ReadAllLines(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "words_alpha.txt"));
-            //foreach (string line in lines)
-            //{
-            //    if (line.Length > 2 && line.Length < 10)
-            //    {
-            //        words.Add(line);
-            //    }
-            //}
         }
     }
 }
