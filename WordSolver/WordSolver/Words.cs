@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Text;
 
 namespace WordSolver
 {
@@ -15,12 +14,20 @@ namespace WordSolver
             words = new HashSet<string>();
             parseWords();
         }
+
         /// <summary>
         /// Checks if the word is in the word list.
         /// </summary>
         /// <param name="word">Word to check.</param>
         /// <returns>True if the word is in the list, False otherwise.</returns>
         public bool contains(String word) => words.Contains(word);
+
+        /// <summary>
+        /// Gets a reference to the list of words.
+        /// </summary>
+        /// <returns>The list of words.</returns>
+        public HashSet<string> getWordList() => words;
+
         /// <summary>
         /// Parses the word list txt file into a data structure.
         /// </summary>

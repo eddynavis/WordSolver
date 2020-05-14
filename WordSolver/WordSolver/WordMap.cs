@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace WordSolverTest
+namespace WordSolver
 {
     /// <summary>
     /// Breaks down the given letters into a map to determine if a given word is a match.
